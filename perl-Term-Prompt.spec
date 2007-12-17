@@ -16,7 +16,6 @@ BuildRequires:  perl-devel
 %endif
 Buildrequires:  perl(Term::ReadKey)
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
 
 %description
 A Perl module for prompting a user for information.
