@@ -1,28 +1,28 @@
-%define module  Term-Prompt
-%define name    perl-%{module}
-%define version 1.04
-%define release %mkrel 3
+%define upstream_name    Term-Prompt
+%define upstream_version 1.04
 
-Name:           %{name}
-Version:        %{version}
-Release:        %{release}
-Summary:        Perl extension for prompting a user for information
-License:        GPL or Artistic
-Group:          Development/Perl
-Url:            http://search.cpan.org/dist/%{module}
-Source:         http://www.cpan.org/modules/by-module/Term/%{module}-%{version}.tar.bz2
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    Perl extension for prompting a user for information
+License:    GPL+ or Artistic
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{upstream_version}.tar.bz2
+
 %if %{mdkversion} < 1010
 BuildRequires:  perl-devel
 %endif
 Buildrequires:  perl(Term::ReadKey)
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 A Perl module for prompting a user for information.
 
 %prep
-%setup -q -n %{module}-%{version} 
+%setup -q -n %{upstream_name}-%{upstream_version}
 chmod 644 Changes README lib/Term/Prompt.pm
 perl -pi -e 's/\r\n$/\n/;'  Changes README lib/Term/Prompt.pm
 
@@ -45,4 +45,3 @@ rm -rf %{buildroot}
 %doc Changes README
 %{perl_vendorlib}/Term
 %{_mandir}/*/*
-
