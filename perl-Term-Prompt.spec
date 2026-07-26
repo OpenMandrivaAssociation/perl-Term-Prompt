@@ -1,15 +1,13 @@
 %define upstream_name    Term-Prompt
-%define upstream_version 1.04
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	4
+Version:	1.04
+Release:	5
 
 Summary:	Perl extension for prompting a user for information
 License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	http://www.cpan.org/modules/by-module/Term/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -20,7 +18,7 @@ BuildArch:	noarch
 A Perl module for prompting a user for information.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 chmod 644 Changes README lib/Term/Prompt.pm
 perl -pi -e 's/\r\n$/\n/;'  Changes README lib/Term/Prompt.pm
 
@@ -43,9 +41,7 @@ make test
 %changelog
 * Sat Aug 01 2009 JÃ©rÃ´me Quelin <jquelin@mandriva.org> 1.40.0-1mdv2010.0
 + Revision: 405540
-- rebuild using %%perl_convert_version
-
-* Wed Jul 23 2008 Thierry Vignaud <tvignaud@mandriva.com> 1.04-3mdv2009.0
+- rebuild using %1.04 Wed Jul 23 2008 Thierry Vignaud <tvignaud@mandriva.com> 1.04-3mdv2009.0
 + Revision: 241961
 - rebuild
 - kill re-definition of %%buildroot on Pixel's request
